@@ -7,7 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get(':userId')
-  getUser(@Param('userId') userId: string): UserDto {
-    return { id: Number.parseInt(userId, 10) };
+  getUser(@Param('userId') userId: string): Promise<UserDto> {
+    return this.appService.getUser(userId);
   }
 }
